@@ -1,6 +1,5 @@
-@import "../node_modules/tailwindcss/dist/lib.d.mts";
-@import "../node_modules/flowbite/src/themes/default.css";
+@import "tailwindcss";
+@import "flowbite/src/themes/default.css";
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
-
 
