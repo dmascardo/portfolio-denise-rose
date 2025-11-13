@@ -7,63 +7,70 @@
     <link rel="icon" href="public/small%20profile.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        /* This removes default spacing from all elements so we start clean */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Main settings for the whole page */
         body {
-            font-family: 'Press Start 2P', cursive;
-            background-color: #f5e6d3;
-            color: #2c1810;
-            line-height: 1.8;
-            overflow-x: hidden;
+            font-family: 'Press Start 2P', cursive; /* Cool retro video game font */
+            background-color: #f5e6d3; /* Light beige background */
+            color: #2c1810; /* Dark brown text */
+            line-height: 1.8; /* Space between lines of text */
+            overflow-x: hidden; /* No horizontal scrolling */
         }
 
-        /* Loading Screen */
+        /* Loading Screen - The "Loading Portfolio..." screen you see first */
         .loading-screen {
-            position: fixed;
+            position: fixed; /* Stays in place */
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
-            background-color: #4a7c59;
+            height: 100vh; /* Full screen height */
+            background-color: #4a7c59; /* Green background */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 10000;
-            animation: fadeOut 0.5s ease-in-out 2s forwards;
+            z-index: 10000; /* On top of everything */
+            animation: fadeOut 0.5s ease-in-out 2s forwards; /* Disappears after 2 seconds */
         }
 
+        /* "LOADING PORTFOLIO..." text */
         .loading-text {
-            color: #ffd700;
+            color: #ffd700; /* Gold color */
             font-size: 1.2rem;
             margin-bottom: 30px;
-            animation: blink 1s infinite;
+            animation: blink 1s infinite; /* Makes it blink */
         }
 
+        /* The loading bar container */
         .loading-bar {
             width: 300px;
             height: 30px;
-            border: 3px solid #2c1810;
-            background-color: #f5e6d3;
+            border: 3px solid #2c1810; /* Dark border */
+            background-color: #f5e6d3; /* Light background */
             position: relative;
             overflow: hidden;
         }
 
+        /* The yellow part that fills up the loading bar */
         .loading-progress {
             height: 100%;
-            background-color: #ffd700;
-            animation: load 2s ease-out forwards;
+            background-color: #ffd700; /* Gold/yellow color */
+            animation: load 2s ease-out forwards; /* Fills from 0% to 100% in 2 seconds */
         }
 
+        /* Animation: makes the loading bar fill up */
         @keyframes load {
             0% { width: 0%; }
             100% { width: 100%; }
         }
 
+        /* Animation: makes the loading screen disappear */
         @keyframes fadeOut {
             to {
                 opacity: 0;
@@ -71,93 +78,102 @@
             }
         }
 
+        /* Animation: makes text blink on and off */
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+            0%, 100% { opacity: 1; } /* Fully visible */
+            50% { opacity: 0.3; } /* Dimmed */
         }
 
-        /* Fixed Navigation */
+        /* Fixed Navigation - The menu bar that stays at the top when you scroll */
         .nav-wrapper {
-            position: fixed;
+            position: fixed; /* Stays at the top even when scrolling */
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
-            background-color: #4a7c59;
-            border-bottom: 3px solid #2c1810;
-            transition: all 0.3s ease;
+            z-index: 1000; /* Above other content */
+            background-color: #4a7c59; /* Green background */
+            border-bottom: 3px solid #2c1810; /* Dark line at bottom */
+            transition: all 0.3s ease; /* Smooth changes */
         }
 
+        /* When you scroll down, the nav gets a shadow */
         .nav-wrapper.scrolled {
             box-shadow: 0 5px 20px rgba(44, 24, 16, 0.3);
         }
 
+        /* The actual navigation menu */
         nav {
             padding: 15px 20px;
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+            gap: 15px; /* Space between buttons */
+            justify-content: center; /* Center the buttons */
+            flex-wrap: wrap; /* Buttons wrap on small screens */
             max-width: 1400px;
             margin: 0 auto;
         }
 
+        /* Each navigation button (HOME, ABOUT, PROJECTS, etc) */
         nav a {
-            background-color: #ffffff;
-            color: #2c1810;
+            background-color: #ffffff; /* White background */
+            color: #2c1810; /* Dark text */
             padding: 10px 25px;
-            text-decoration: none;
-            border-radius: 25px;
+            text-decoration: none; /* No underline */
+            border-radius: 25px; /* Rounded edges */
             font-weight: bold;
-            transition: all 0.3s;
-            border: 3px solid #2c1810;
+            transition: all 0.3s; /* Smooth hover effect */
+            border: 3px solid #2c1810; /* Dark border */
             font-size: 0.7rem;
             position: relative;
             overflow: hidden;
         }
 
+        /* Yellow background that slides in when hovering */
         nav a::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: -100%; /* Starts hidden on the left */
             width: 100%;
             height: 100%;
-            background-color: #ffd700;
+            background-color: #ffd700; /* Gold color */
             transition: left 0.3s ease;
-            z-index: -1;
+            z-index: -1; /* Behind the text */
         }
 
+        /* When you hover, the yellow slides in */
         nav a:hover::before {
             left: 0;
         }
 
+        /* When you hover over a button */
         nav a:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px); /* Lifts up slightly */
             color: #2c1810;
         }
 
+        /* The currently active page button */
         nav a.active {
-            background-color: #ffd700;
+            background-color: #ffd700; /* Gold background */
             color: #2c1810;
         }
 
-        /* Content wrapper for padding */
+        /* Pushes content down so nav doesn't cover it */
         .content-wrapper {
             margin-top: 70px;
         }
 
-        /* Hero Section with Parallax */
+        /* Hero Section - The big first section with your name and picture */
         .hero-section {
-            background: linear-gradient(135deg, #4a7c59 0%, #6b5d6e 100%);
+            background: linear-gradient(135deg, #4a7c59 0%, #6b5d6e 100%); /* Green to purple gradient */
             padding: 80px 20px;
             position: relative;
             overflow: hidden;
-            min-height: 100vh;
+            min-height: 100vh; /* Takes up whole screen */
             display: flex;
-            align-items: center;
+            align-items: center; /* Centers content vertically */
         }
 
+        /* Container for the floating shapes in background */
         .hero-bg-shapes {
             position: absolute;
             width: 100%;
@@ -165,41 +181,46 @@
             top: 0;
             left: 0;
             overflow: hidden;
-            z-index: 1;
+            z-index: 1; /* Behind main content */
         }
 
+        /* The floating geometric shapes */
         .shape {
             position: absolute;
-            border: 3px solid rgba(255, 215, 0, 0.2);
-            animation: float 20s infinite ease-in-out;
+            border: 3px solid rgba(255, 215, 0, 0.2); /* Semi-transparent gold border */
+            animation: float 20s infinite ease-in-out; /* Floats forever */
         }
 
+        /* First shape - circle in top left */
         .shape1 {
             width: 100px;
             height: 100px;
             top: 20%;
             left: 10%;
-            border-radius: 50%;
+            border-radius: 50%; /* Makes it a circle */
             animation-delay: 0s;
         }
 
+        /* Second shape - square on right */
         .shape2 {
             width: 150px;
             height: 150px;
             top: 60%;
             right: 10%;
-            animation-delay: 5s;
+            animation-delay: 5s; /* Starts moving 5 seconds later */
         }
 
+        /* Third shape - small circle at bottom */
         .shape3 {
             width: 80px;
             height: 80px;
             bottom: 20%;
             left: 30%;
-            border-radius: 50%;
-            animation-delay: 10s;
+            border-radius: 50%; /* Makes it a circle */
+            animation-delay: 10s; /* Starts moving 10 seconds later */
         }
 
+        /* Animation: makes shapes float and rotate around */
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
             25% { transform: translate(30px, -30px) rotate(90deg); }
@@ -207,21 +228,24 @@
             75% { transform: translate(-30px, -20px) rotate(270deg); }
         }
 
+        /* Holds your intro text and profile picture side by side */
         .hero-container {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 60px; /* Space between columns */
             align-items: center;
             position: relative;
-            z-index: 2;
+            z-index: 2; /* Above the floating shapes */
         }
 
+        /* Your intro text (left side) */
         .hero-content {
-            animation: slideInLeft 1s ease-out;
+            animation: slideInLeft 1s ease-out; /* Slides in from left */
         }
 
+        /* Animation: slides content in from the left */
         @keyframes slideInLeft {
             from {
                 opacity: 0;
@@ -233,91 +257,101 @@
             }
         }
 
+        /* Your name "Hello World! I'm Denise Rose" */
         .hero-content h1 {
-            color: #ffffff;
+            color: #ffffff; /* White text */
             font-size: 2rem;
             margin-bottom: 20px;
             line-height: 1.4;
-            text-shadow: 3px 3px 0px rgba(44, 24, 16, 0.3);
+            text-shadow: 3px 3px 0px rgba(44, 24, 16, 0.3); /* Shadow behind text */
         }
 
+        /* The typing text that changes (Full-Stack Developer, etc) */
         .typing-effect {
-            color: #ffd700;
+            color: #ffd700; /* Gold text */
             font-size: 1.2rem;
             margin-bottom: 30px;
             min-height: 40px;
         }
 
+        /* The blinking cursor after typing text */
         .typing-effect::after {
             content: '_';
-            animation: blink 1s infinite;
+            animation: blink 1s infinite; /* Blinks on and off */
         }
 
+        /* The description box about you */
         .hero-description {
-            background-color: rgba(232, 220, 199, 0.95);
-            border: 3px solid #2c1810;
+            background-color: rgba(232, 220, 199, 0.95); /* Light beige, slightly see-through */
+            border: 3px solid #2c1810; /* Dark border */
             padding: 20px;
             margin-bottom: 30px;
             color: #2c1810;
-            border-radius: 10px;
+            border-radius: 10px; /* Rounded corners */
             font-size: 0.75rem;
             line-height: 1.8;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px); /* Blurs background behind it */
             animation: slideInLeft 1.2s ease-out;
         }
 
-        /* Tech Stack with Animation */
+        /* Tech Stack section - Shows your skills (React, Node.js, etc) */
         .tech-stack {
             margin-bottom: 30px;
         }
 
+        /* "// TECH STACK" title */
         .tech-stack h3 {
-            color: #ffd700;
+            color: #ffd700; /* Gold text */
             font-size: 0.9rem;
             margin-bottom: 15px;
         }
 
+        /* Container holding all tech skill buttons */
         .tech-icons {
             display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            gap: 15px; /* Space between buttons */
+            flex-wrap: wrap; /* Buttons wrap to next line if needed */
         }
 
+        /* Each individual tech button (React, Node.js, Python, etc) */
         .tech-icon {
-            background-color: #ffd700;
-            border: 3px solid #2c1810;
+            background-color: #ffd700; /* Gold background */
+            border: 3px solid #2c1810; /* Dark border */
             padding: 12px 25px;
-            border-radius: 50px;
-            color: #2c1810;
+            border-radius: 50px; /* Pill shape */
+            color: #2c1810; /* Dark text */
             font-weight: bold;
             font-size: 0.7rem;
-            transition: all 0.3s;
-            cursor: pointer;
+            transition: all 0.3s; /* Smooth hover effect */
+            cursor: pointer; /* Shows hand cursor when hovering */
             position: relative;
-            animation: popIn 0.5s ease-out backwards;
+            animation: popIn 0.5s ease-out backwards; /* Pops in when page loads */
         }
 
-        .tech-icon:nth-child(1) { animation-delay: 0.1s; }
-        .tech-icon:nth-child(2) { animation-delay: 0.2s; }
-        .tech-icon:nth-child(3) { animation-delay: 0.3s; }
-        .tech-icon:nth-child(4) { animation-delay: 0.4s; }
-        .tech-icon:nth-child(5) { animation-delay: 0.5s; }
+        /* Makes each tech button appear with a slight delay */
+        .tech-icon:nth-child(1) { animation-delay: 0.1s; } /* React appears first */
+        .tech-icon:nth-child(2) { animation-delay: 0.2s; } /* Node.js appears second */
+        .tech-icon:nth-child(3) { animation-delay: 0.3s; } /* Python third */
+        .tech-icon:nth-child(4) { animation-delay: 0.4s; } /* Java fourth */
+        .tech-icon:nth-child(5) { animation-delay: 0.5s; } /* Docker fifth */
 
+        /* Animation: makes buttons pop in from small to normal size */
         @keyframes popIn {
             from {
-                opacity: 0;
-                transform: scale(0.5);
+                opacity: 0; /* Invisible */
+                transform: scale(0.5); /* Starts half size */
             }
             to {
-                opacity: 1;
-                transform: scale(1);
+                opacity: 1; /* Fully visible */
+                transform: scale(1); /* Normal size */
             }
         }
 
+        /* When you hover over a tech button */
         .tech-icon:hover {
-            transform: scale(1.1) rotate(-5deg);
-            background-color: #ffffff;
-            box-shadow: 5px 5px 0px #2c1810;
+            transform: scale(1.1) rotate(-5deg); /* Gets bigger and tilts */
+            background-color: #ffffff; /* Changes to white */
+            box-shadow: 5px 5px 0px #2c1810; /* Adds shadow */
         }
 
         /* Hero Avatar/Image */
@@ -338,7 +372,6 @@
         }
 
         .hero-avatar {
-            background: linear-gradient(135deg, #e8dcc7 0%, #ffd700 100%);
             border: 5px solid #2c1810;
             height: 400px;
             display: flex;
@@ -351,6 +384,7 @@
             overflow: hidden;
             box-shadow: 10px 10px 0px rgba(44, 24, 16, 0.2);
             transition: all 0.3s ease;
+            background-color: transparent;
         }
 
         .hero-avatar:hover {
@@ -1329,15 +1363,15 @@
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <div class="timeline-date">2025 - Present</div>
-                            <div class="timeline-title">UNM App Contest Winner</div>
+                            <div class="timeline-date">November 2025</div>
+                            <div class="timeline-title">Desert Dev Lab Hackathon Winner</div>
                             <div class="timeline-description">Won hackathon with OptiGreen project</div>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <div class="timeline-date">2024 - 2025</div>
+                            <div class="timeline-date">September 2025 - December 2025</div>
                             <div class="timeline-title">Deep Dive Bootcamp</div>
                             <div class="timeline-description">Full-stack development intensive</div>
                         </div>
@@ -1345,17 +1379,9 @@
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <div class="timeline-date">2024 - 2026</div>
+                            <div class="timeline-date">Expected May 2026</div>
                             <div class="timeline-title">WGU Computer Science</div>
                             <div class="timeline-description">BS in Computer Science</div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-date">Career Transition</div>
-                            <div class="timeline-title">Healthcare to Tech</div>
-                            <div class="timeline-description">Bringing unique perspective</div>
                         </div>
                     </div>
                 </div>
@@ -1419,13 +1445,6 @@
     <section id="projects" class="projects-section">
         <div class="projects-container">
             <h2 class="section-title light">// FEATURED PROJECTS</h2>
-
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">ALL</button>
-                <button class="filter-btn" data-filter="fullstack">FULL-STACK</button>
-                <button class="filter-btn" data-filter="frontend">FRONTEND</button>
-                <button class="filter-btn" data-filter="backend">BACKEND</button>
-            </div>
 
             <div class="projects-grid">
                 <div class="project-card" data-category="fullstack">
@@ -1503,44 +1522,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card" data-category="frontend">
-                    <div class="project-image">🎨</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Portfolio Site</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <p class="project-description">
-                            Retro gaming-themed personal portfolio with smooth animations.
-                        </p>
-                        <div class="project-links">
-                            <a href="#" class="project-link">You're Here!</a>
-                            <a href="#" class="project-link">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="backend">
-                    <div class="project-image">🔧</div>
-                    <div class="project-content">
-                        <h3 class="project-title">API Gateway</h3>
-                        <div class="project-tech">
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">Docker</span>
-                            <span class="tech-tag">Redis</span>
-                        </div>
-                        <p class="project-description">
-                            Scalable microservices architecture with rate limiting and caching.
-                        </p>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Docs</a>
-                            <a href="#" class="project-link">GitHub</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1573,30 +1554,6 @@
                 <p class="cert-date">2025</p>
                 <a href="#" class="cert-verify">View Project</a>
             </div>
-
-            <div class="cert-card">
-                <div class="cert-icon">🎮</div>
-                <h3 class="cert-title">EA Virtual Experience</h3>
-                <p class="cert-issuer">Electronic Arts</p>
-                <p class="cert-date">2024</p>
-                <a href="#" class="cert-verify">Certificate</a>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-icon">💼</div>
-                <h3 class="cert-title">BCG GenAI Consultant</h3>
-                <p class="cert-issuer">Boston Consulting Group</p>
-                <p class="cert-date">2024</p>
-                <a href="#" class="cert-verify">View</a>
-            </div>
-
-            <div class="cert-card">
-                <div class="cert-icon">🏦</div>
-                <h3 class="cert-title">Goldman Sachs IT</h3>
-                <p class="cert-issuer">Goldman Sachs</p>
-                <p class="cert-date">2024</p>
-                <a href="#" class="cert-verify">Details</a>
-            </div>
         </div>
     </section>
 
@@ -1607,7 +1564,7 @@
 
             <div class="contact-grid">
                 <div class="contact-form-wrapper">
-                    <form id="contactForm">
+                    <form id="contactForm" action="mailto:deniserose.mascardo@gmail.com" method="post" enctype="text/plain">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" name="name" required placeholder="John Doe">
@@ -1874,26 +1831,9 @@
     });
   });
 
-  // Form submission
+  // Form submission - now handled by mailto
   document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Get form data
-    const formData = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      subject: document.getElementById('subject').value,
-      message: document.getElementById('message').value
-    };
-
-    // Here you would typically send the form data to a server
-    console.log('Form submitted:', formData);
-
-    // Show success message
-    alert('Thank you for your message! I\'ll get back to you within 24 hours.');
-
-    // Reset form
-    this.reset();
+    // Form will open default email client
   });
 
   // Add parallax effect to hero shapes
@@ -1911,7 +1851,7 @@
     });
   });
 
-  // Add hover sound effect (optional - you can remove if not needed)
+
   const addHoverEffect = (elements) => {
     elements.forEach(element => {
       element.addEventListener('mouseenter', () => {
