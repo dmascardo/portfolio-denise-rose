@@ -628,6 +628,43 @@
             );
             animation: slide 1s linear infinite;
         }
+        .download-resume-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 30px;
+            background-color: #ffd700;
+            color: #2c1810;
+            border: 3px solid #2c1810;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-resume-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .download-resume-btn:hover::before {
+            left: 0;
+        }
+
+        .download-resume-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 rgba(44, 24, 16, 0.3);
+        }
 
         /* Projects Grid with Hover Effects */
         .projects-section {
@@ -1403,8 +1440,11 @@
                         <div class="skill-progress" style="width: 0;" data-width="90%"></div>
                     </div>
                 </div>
+                <a href="public/portfolioresume.pdf" download class="download-resume-btn">📄 DOWNLOAD RESUME</a>
             </div>
         </div>
+
+
     </section>
 
     <!-- Projects Section -->
@@ -1423,7 +1463,7 @@
                             <span class="tech-tag">PostgreSQL</span>
                         </div>
                         <p class="project-description">
-                            Receipt management app with Albuquerque Open Data integration for business verification.
+                            Full-stack receipt management application built as team capstone project, enabling users to organize and track expenses efficiently.
                         </p>
                         <div class="project-links">
                             <a href="https://github.com/Beloved-Bolide/capstone" target="_blank" class="project-link">GitHub</a>
@@ -1472,9 +1512,9 @@
                     <div class="project-content">
                         <h3 class="project-title">Timeless Auto</h3>
                         <div class="project-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Springboot</span>
+                            <span class="tech-tag">Thymeleaf</span>
                         </div>
                         <p class="project-description">
                             Complete inventory management platform for automotive dealerships.
@@ -1498,7 +1538,7 @@
                 <h3 class="cert-title">ITIL® 4 Foundation</h3>
                 <p class="cert-issuer">AXELOS</p>
                 <p class="cert-date">July 2025</p>
-                <a href="#" class="cert-verify">Verify</a>
+                <a href="public/e-cert.pdf" target="_blank" class="cert-verify">Verify</a>
             </div>
 
             <div class="cert-card">
@@ -1587,7 +1627,7 @@
                                 </svg>
                             </a>
                             <a href="https://wgu.joinhandshake.com/profiles/denise-rose" target="_blank" class="social-link" aria-label="Handshake">
-                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                H
                                     <path d="M7 3L5 8v13h4V11h2v10h4V11h2v10h4V8l-2-5H7zm2 2h6l1.5 4H7.5L9 5zm-2 6h2v8H7v-8zm6 0h2v8h-2v-8z"/>
                                 </svg>
                             </a>
